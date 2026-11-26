@@ -29,7 +29,13 @@ VB（Visual Basic）で作られた miniWMS（簡易倉庫管理システム）�
 
 ```
 miniWMS_web_From_vb/
-└── README.md
+├── README.md
+├── docker-compose.yml     PostgreSQL 17（開発用）
+├── .env.example           接続設定の例（実値は .env に。コミットしない）
+├── backend/               Spring Boot（Maven）。ヘルスチェックAPIのみ
+├── frontend/              React + TypeScript（Vite）+ Tailwind CSS v4。トップ画面のみ
+├── dumps/                 DBスキーマ（001_schema.sql）
+└── docs/                  VBの洗い出し（機能・画面・テーブル・差異・移行の進め方）
 ```
 
 （実装の進行に合わせて追記します）
@@ -43,7 +49,7 @@ miniWMS_web_From_vb/
 
 ## ステータス
 
-準備中（リポジトリ作成直後）
+土台まで実装（洗い出し、DB定義、バックエンド・フロントの雛形）。各画面の実装はこれから（実装順は docs/04_移行の進め方.md）。ビルド・起動は未確認。
 
 ## 更新履歴
 
@@ -51,3 +57,4 @@ miniWMS_web_From_vb/
 | --- | --- |
 | 2026年11月26日 | リポジトリ作成、README追加 |
 | 2026年11月26日 | 技術スタックを明記 |
+| 2026年11月26日 | VBの洗い出し（docs）、DB定義・docker-compose、バックエンド・フロントの雛形を追加 |

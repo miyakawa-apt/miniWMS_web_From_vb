@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: miniwms-backend
+  datasource:
+    # ユーザー名・パスワードは環境変数 SPRING_DATASOURCE_USERNAME / SPRING_DATASOURCE_PASSWORD で渡す
+    # （値はリポジトリに書かない。.env.example を参照）
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/miniwms}
+    hikari:
+      # DBが起動していなくてもアプリは起動する（ヘルスチェックで db: down と返す）
+      initialization-fail-timeout: -1
+      connection-timeout: 3000

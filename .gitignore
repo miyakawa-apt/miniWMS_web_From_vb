@@ -1,0 +1,17 @@
+# 環境ごとの設定（実値）
+.env
+
+# バックエンド
+backend/target/
+
+# フロントエンド
+frontend/node_modules/
+frontend/dist/
+# フロントのビルド出力（Spring Boot の static に載せる）
+backend/src/main/resources/static/
+
+# IDE・OS
+.idea/
+.vscode/
+*.iml
+Thumbs.db
