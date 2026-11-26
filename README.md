@@ -17,7 +17,13 @@ VB（Visual Basic）で作られた miniWMS（簡易倉庫管理システム）�
 
 ## 技術スタック
 
-未定です。検討が進み次第、本セクションを更新します。
+| 区分 | 採用技術 |
+| --- | --- |
+| バックエンド | Java 25 / Spring Boot（Maven） |
+| フロントエンド | React + TypeScript（Vite）/ Tailwind CSS v4 |
+| データベース | PostgreSQL 17（Docker Compose） |
+| コンテナ | Docker |
+| 構成 | Spring Boot と React の単一デプロイ（Windows 限定） |
 
 ## ディレクトリ構成
 
@@ -44,3 +50,4 @@ miniWMS_web_From_vb/
 | 日付 | 内容 |
 | --- | --- |
 | 2026年11月26日 | リポジトリ作成、README追加 |
+| 2026年11月26日 | 技術スタックを明記 |
