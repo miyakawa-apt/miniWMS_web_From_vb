@@ -40,6 +40,29 @@ miniWMS_web_From_vb/
 
 （実装の進行に合わせて追記します）
 
+## 起動方法
+
+前提：Java 25、Node.js、Docker（Docker Desktop）。Maven は不要（`backend/mvnw` を使う）。
+
+```powershell
+# 1. 接続設定を作る（.env はコミットしない。パスワードを自分で設定する）
+Copy-Item .env.example .env
+
+# 2. DB（PostgreSQL 17）を起動する（初回にテーブルが作られる）
+docker compose up -d db
+
+# 3. フロントをビルドする（出力は backend の static に入る）
+cd frontend; npm install; npm run build; cd ..
+
+# 4. バックエンドをビルドして起動する
+cd backend; ./mvnw -DskipTests package; cd ..
+java -jar backend/target/miniwms-backend-0.0.1-SNAPSHOT.jar
+```
+
+- 画面：http://localhost:8080/ ／ ヘルスチェック：http://localhost:8080/api/health（`db` が `up` なら成功）
+- 4 の前に、`.env` の値を環境変数として読み込む（`SPRING_DATASOURCE_USERNAME`・`SPRING_DATASOURCE_PASSWORD`・`DB_URL`）
+- DB のポートは既定で 15432（この PC に別の PostgreSQL が 5432 で動いていても競合しないため）
+
 ## 進め方
 
 1. 元VBプログラムの機能・画面・テーブルの棚卸し

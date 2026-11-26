@@ -10,7 +10,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?.env に POSTGRES_PASSWORD を設定してください}
       TZ: Asia/Tokyo
     ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+      - "${POSTGRES_PORT:-15432}:5432"
     volumes:
       - miniwms-pgdata:/var/lib/postgresql/data
       # 初回起動時（データ領域が空のとき）だけ、スキーマを流し込む
