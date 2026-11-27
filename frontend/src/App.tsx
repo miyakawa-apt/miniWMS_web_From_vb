@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react'
+import EmptyScreen from './screens/EmptyScreen'
+import MainMenu from './screens/MainMenu'
+import { screenTitles, type ScreenId } from './screens/screens'
 
 type Health = { status: string; db: string; time: string }
 
@@ -11,6 +14,7 @@ export default function App() {
   const [now, setNow] = useState(() => new Date())
   const [health, setHealth] = useState<Health | null>(null)
   const [error, setError] = useState(false)
+  const [screen, setScreen] = useState<ScreenId>('menu')
 
   // 現在時刻（VBの全画面にある時計。1秒ごとに更新）
   useEffect(() => {
@@ -33,12 +37,13 @@ export default function App() {
         <span className="text-sm text-gray-600">{formatNow(now)}</span>
       </header>
 
-      <section className="mt-6">
-        <p className="text-gray-700">
-          VBで作られた簡易倉庫管理システムを、Webアプリとして作り直している実験用プロジェクトです。
-          各画面は順次実装します（現在は土台のみ）。
-        </p>
-      </section>
+      <div className="mt-6">
+        {screen === 'menu' ? (
+          <MainMenu onNavigate={setScreen} />
+        ) : (
+          <EmptyScreen title={screenTitles[screen]} onBack={() => setScreen('menu')} />
+        )}
+      </div>
 
       <section className="mt-6 rounded border p-4">
         <h2 className="mb-2 font-semibold">バックエンドの状態</h2>
